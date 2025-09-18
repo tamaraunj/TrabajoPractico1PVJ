@@ -1,39 +1,66 @@
 Pelota pelota;
 Raqueta raqueta;
 boolean izquierda, derecha;
+boolean pelotaActiva = false;
 
 
 public void setup(){
   size(600,300);
   pelota= new Pelota(width/2, height-70, 40, 2);
-  raqueta= new Raqueta(width/2, height-25, 60, 15);
+  raqueta= new Raqueta(width/2, height-30, 60, 15);
 }
 
-public void draw(){
+public void draw(){;
   background(0);
-  pelota.dibujarPelota();
-  pelota.moverPelota();
-  raqueta.dibujarRaqueta();
+  if(pelotaActiva){
+    pelota.moverPelota();
+  } else{
+    pelota.posX = width/2;
+    pelota.posY = height-70;
+  }
+  
   
   int direccionRaqueta = 0;
   if(izquierda){
-    println("Tecla izquierda presionada");
     direccionRaqueta=-1;
   }
   if(derecha){
-    println("Tecla derecha presionada");
     direccionRaqueta=1;
   }
   raqueta.moverRaqueta(direccionRaqueta);
+  
+  if (pelota.colisionarConRaqueta(raqueta)){
+     pelota.direccionY *= -1; 
+  }
+  
+  if (pelota.posY > raqueta.posY){
+    println("GAME OVER");
+    pelota.reiniciar();
+    pelotaActiva=false;
+  }
+  
+  pelota.dibujarPelota();
+  raqueta.dibujarRaqueta();
   
 }
 
 public void keyPressed(){
   if (keyCode==LEFT || key=='A'){
     izquierda=true;
+    if (!pelotaActiva) {
+        pelotaActiva = true;
+        pelota.direccionX = 1;
+        pelota.direccionY = -1;
+     }
+
   }
   if (keyCode==RIGHT | key=='D') {
     derecha=true;
+    if (!pelotaActiva) {
+      pelotaActiva = true;
+      pelota.direccionX = 1;
+      pelota.direccionY = -1;
+    }
   }
 }
 

@@ -31,4 +31,13 @@ class Pelota{
        direccionY*=-1;
     }  
   }
+  public boolean colisionarConRaqueta(Raqueta raqueta) {
+    return posY + diametro/2 >= raqueta.posY &&    
+           posX >= raqueta.posX &&                 
+           posX <= raqueta.posX + raqueta.ancho;     
+  }
+  void reiniciar() {
+    direccionX = 0;
+    direccionY = 0;
+  }
 }
