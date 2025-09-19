@@ -1,5 +1,5 @@
-Pelota pelota;
-Raqueta raqueta;
+private Pelota pelota;
+private Raqueta raqueta;
 boolean izquierda, derecha;
 boolean pelotaActiva = false;
 
@@ -15,8 +15,8 @@ public void draw(){;
   if(pelotaActiva){
     pelota.moverPelota();
   } else{
-    pelota.posX = width/2;
-    pelota.posY = height-70;
+    pelota.setPosX(width/2);
+    pelota.setPosY(height-70);
   }
   
   
@@ -30,10 +30,10 @@ public void draw(){;
   raqueta.moverRaqueta(direccionRaqueta);
   
   if (pelota.colisionarConRaqueta(raqueta)){
-     pelota.direccionY *= -1; 
+     pelota.setDireccionY(pelota.getDireccionY() * -1);
   }
   
-  if (pelota.posY > raqueta.posY){
+  if (pelota.getPosY() > raqueta.getPosY()){
     println("GAME OVER");
     pelota.reiniciar();
     pelotaActiva=false;
@@ -49,8 +49,8 @@ public void keyPressed(){
     izquierda=true;
     if (!pelotaActiva) {
         pelotaActiva = true;
-        pelota.direccionX = 1;
-        pelota.direccionY = -1;
+        pelota.setDireccionX(1);
+        pelota.setDireccionY(-1);
      }
 
   }
@@ -58,8 +58,8 @@ public void keyPressed(){
     derecha=true;
     if (!pelotaActiva) {
       pelotaActiva = true;
-      pelota.direccionX = 1;
-      pelota.direccionY = -1;
+      pelota.setDireccionX(1);
+      pelota.setDireccionY(-1);
     }
   }
 }

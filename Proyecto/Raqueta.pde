@@ -1,7 +1,7 @@
 class Raqueta{
-  float posX, posY;
-  float ancho, alto;
-  float velocidad;
+  private float posX, posY;
+  private float ancho, alto;
+  private float velocidad;
   
   //Constructor por defecto
   public Raqueta(){
@@ -29,5 +29,35 @@ class Raqueta{
     }
     
   }
-  
+ 
+  public float getPosX() {
+    return posX;
+  }
+  public float getPosY() {
+    return posY;
+  }
+  public float getAncho() {
+    return ancho;
+  }
+  public float getAlto() {
+    return alto;
+  }
+  public float getVelocidad() {
+    return velocidad;
+  }
+  public void setPosX(float posX) {
+    this.posX = posX;
+  }
+  public void setPosY(float posY) {
+    this.posY = posY;
+  }
+  public void setAncho(float ancho) {
+    this.ancho = ancho;
+  }
+  public void setAlto(float alto) {
+    this.alto = alto;
+  }
+  public void setVelocidad(float velocidad) {
+    this.velocidad = velocidad;
+  } 
 }

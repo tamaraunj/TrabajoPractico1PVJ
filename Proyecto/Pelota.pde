@@ -1,8 +1,8 @@
 class Pelota{
-   float posX, posY;
-   float direccionX, direccionY;
-   float diametro;
-   float velocidad;
+   private float posX, posY;
+   private float direccionX, direccionY;
+   private float diametro;
+   private float velocidad;
    
   //Constructor por defecto
   public Pelota(){
@@ -32,12 +32,50 @@ class Pelota{
     }  
   }
   public boolean colisionarConRaqueta(Raqueta raqueta) {
-    return posY + diametro/2 >= raqueta.posY &&    
-           posX >= raqueta.posX &&                 
-           posX <= raqueta.posX + raqueta.ancho;     
+    return posY + diametro/2 >= raqueta.getPosY() &&    
+           posX >= raqueta.getPosX() &&                 
+           posX <= raqueta.getPosX() + raqueta.getAncho();     
   }
-  void reiniciar() {
+  public void reiniciar() {
     direccionX = 0;
     direccionY = 0;
+  }
+  // Getters y Setters
+  public float getPosX() { 
+    return posX; 
+  }
+  public float getPosY() { 
+    return posY; 
+  }
+  public float getDireccionX() { 
+    return direccionX; 
+  }
+  public float getDireccionY() { 
+    return direccionY; 
+  }
+  public float getDiametro() { 
+    return diametro; 
+  }
+  public float getVelocidad() { 
+    return velocidad; 
+  }
+
+  public void setPosX(float posX) { 
+    this.posX = posX; 
+  }
+  public void setPosY(float posY) { 
+    this.posY = posY; 
+  }
+  public void setDireccionX(float direccionX) { 
+    this.direccionX = direccionX; 
+  }
+  public void setDireccionY(float direccionY) { 
+    this.direccionY = direccionY; 
+  }
+  public void setDiametro(float diametro) { 
+    this.diametro = diametro; 
+  }
+  public void setVelocidad(float velocidad) { 
+    this.velocidad = velocidad; 
   }
 }
